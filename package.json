@@ -1,0 +1,25 @@
+{
+  "name": "notes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "live": "nodemon index.js"
+  },
+  "author": "alexey",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.7.0",
+    "currency-converter-lt": "^2.0.1",
+    "express": "^4.18.2",
+    "sqlite": "^5.1.1"
+  },
+  "prisma": {
+    "schema": "prisma/schema.prisma"
+  },
+  "devDependencies": {
+    "prisma": "^5.7.0"
+  }
+}
