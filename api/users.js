@@ -10,16 +10,14 @@ let router = express.Router()
 // todo ask about after all
 
 router.get('/:id', async function(request, response) {
-  response.json(await prisma.user.findUnique({
-    where: {
-      id: +request.params.id,
-    }
-  }))
+  response.json(await prisma.user.findUnique({where: {id: +request.params.id}}))
 })
+
 
 router.get('/', async function(request, response) {
   response.json(await prisma.user.findMany());
 })
+
 
 router.post('/', async function(request, response) {
   try {
@@ -39,6 +37,7 @@ router.post('/', async function(request, response) {
   }
 })
 
+
 router.put('/:id', async function(request, response) {
   try {
     const user = await prisma.user.update({
@@ -48,12 +47,13 @@ router.put('/:id', async function(request, response) {
       data: request.body
     })
     response.json(user);
-  } catch (error) {
-      console.log(request.originalUrl, ':', 'error: ', error.meta.cause)
-      if (error instanceof Prisma.PrismaClientKnownRequestError) {
-        response.json({'error': error.meta.cause})
-      }
+  }
+  catch (error) {
+    console.log(request.originalUrl, ':', 'error: ', error.meta.cause)
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      response.json({'error': error.meta.cause})
     }
+  }
 })
 
 
@@ -65,7 +65,8 @@ router.delete('/:id', async function(request, response) {
       },
     })
     response.json(user)
-  } catch (error) {
+  }
+  catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         response.json({'error': error.meta.cause})
       }
