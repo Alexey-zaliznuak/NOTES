@@ -1,10 +1,16 @@
 import { Body, Controller, Get, Post, Route, Path, Put, Delete } from 'tsoa';
 import { Prisma, PrismaClient } from '@prisma/client';
-import { SimpleNoteResponse } from './notesController'
 
 
 const prisma = new PrismaClient()
 
+
+interface UserNote {
+  id: string,
+  title: string,
+  text: string,
+  authorId: string
+}
 
 export interface SimpleUserResponse {
   id: String;
@@ -12,11 +18,9 @@ export interface SimpleUserResponse {
   email: String;
 }
 
-
-export interface UserResponse extends SimpleUserResponse{
-  notes: SimpleNoteResponse[],
+export interface UserResponse extends SimpleUserResponse {
+  notes: UserNote[];
 }
-
 
 @Route('users')
 export class UserController extends Controller {
