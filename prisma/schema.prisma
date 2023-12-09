@@ -8,16 +8,16 @@ datasource db {
 }
 
 model User {
-  id    Int     @default(autoincrement()) @id
-  name  String
-  email String  @unique
-  nottes Note[]
+  id        String  @id @default(uuid())
+  name      String
+  email     String  @unique
+  notes     Note[]
 }
 
 model Note {
-  id        Int      @default(autoincrement()) @id
+  id        String  @id @default(uuid())
   title     String
   text      String
   author    User    @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  authorId  Int
+  authorId  String
 }
