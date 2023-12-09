@@ -22,6 +22,7 @@ export interface UserResponse extends SimpleUserResponse {
   notes: UserNote[];
 }
 
+
 @Route('users')
 export class UserController extends Controller {
   @Get('/')

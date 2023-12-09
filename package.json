@@ -1,7 +1,7 @@
 {
-  "name": "NOTES",
+  "name": "notes",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "build/src/server.js",
   "repository": "https://github.com/Alexey-zaliznuak/NOTES.git",
   "author": "Alexey-zaliznuak <zaliznuak20@gmail.com>",
   "license": "MIT",
@@ -9,5 +9,9 @@
     "@prisma/client": "^5.7.0",
     "express": "^4.18.2",
     "tsoa": "^5.1.1"
+  },
+  "scripts": {
+    "build": "tsoa spec-and-routes && tsc",
+    "start": "node build/src/server.js"
   }
 }
